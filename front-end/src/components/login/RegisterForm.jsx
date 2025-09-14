@@ -79,55 +79,47 @@ export function RegisterForm({ setVisible }) {
   const registerSubmit = async () => {
     setLoading(true);
 
-    try {
-      const res = await fetch(`${import.meta.env.VITE_APP_API}/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          first_name,
-          last_name,
-          email,
-          password,
-          bYear,
-          bMonth,
-          bDay,
-          gender,
-        }),
+    return await fetch(`${import.meta.env.VITE_APP_API}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name,
+        last_name,
+        email,
+        password,
+        bYear,
+        bMonth,
+        bDay,
+        gender,
+      }),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.message || "Registration failed");
+        }
+        return data;
+      })
+      .then((data) => {
+        setError("");
+        setSuccess(data.message);
+        const { message, ...rest } = data;
+        setTimeout(() => {
+          dispatch({
+            type: "LOGIN",
+            payload: rest,
+          });
+          navigate("/");
+          Cookies.set("user", JSON.stringify(rest));
+        }, 2000);
+      })
+      .catch((error) => {
+        setSuccess("");
+        setError(error.message || "Something went wrong.");
+        setLoading(false);
       });
-
-      let data = {};
-      try {
-        data = await res.json(); // intenta parsear el JSON
-      } catch {
-        data = {}; // si falla el parseo, evita romper la app
-      }
-
-      if (!res.ok) {
-        throw new Error(data.message || "Registration failed");
-      }
-
-      // ✅ Si llega aquí, todo salió bien
-      setError("");
-      setSuccess(data.message);
-
-      const { message, ...rest } = data;
-
-      setTimeout(() => {
-        dispatch({
-          type: "LOGIN",
-          payload: rest,
-        });
-        navigate("/");
-        Cookies.set("user", JSON.stringify(rest));
-      }, 2000);
-    } catch (error) {
-      setSuccess("");
-      setError(error.message || "Something went wrong.");
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
