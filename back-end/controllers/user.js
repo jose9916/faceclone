@@ -133,34 +133,29 @@ exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-
     if (!user) {
-      return res.status(400).json({
-        message: "The email address you entered is not connected to an account",
+      res.status(400).json({
+        message: "the email addres you entered is not connected to an account",
       });
     }
-
     const check = await bcrypt.compare(password, user.password);
     if (!check) {
-      return res.status(400).json({
+      res.status(400).json({
         message: "Invalid credentials. Please try again.",
       });
     }
-
     const token = generateToken({ id: user._id.toString() }, "7d");
-
-    // ✅ siempre responde en formato JSON
-    return res.status(200).json({
+    res.send({
       id: user._id,
       username: user.username,
       picture: user.picture,
       first_name: user.first_name,
       last_name: user.last_name,
-      token,
+      token: token,
       verified: user.verified,
     });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
