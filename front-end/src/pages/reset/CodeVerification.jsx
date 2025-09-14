@@ -1,7 +1,7 @@
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { LoginInput } from "../../components/inputs/loginInput/index.jsx";
+import { LoginInput } from "../../components/inputs/logininput/index.jsx";
 import * as Yup from "yup";
 
 export function CodeVerification({
