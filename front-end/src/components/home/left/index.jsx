@@ -4,7 +4,7 @@ import { left } from "../../../data/home.jsx";
 import { Link } from "react-router-dom";
 import { ArrowDown1 } from "../../../svg";
 import { useState } from "react";
-import { Shortcut } from "./Shortcut.jsx";
+import { Shortcut } from "./ShortCut.jsx";
 
 export function LeftHome({ user }) {
   const [visible, setVisible] = useState(false);
