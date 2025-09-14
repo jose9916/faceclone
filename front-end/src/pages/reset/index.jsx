@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { Form, Formik } from "formik";
 import { useState } from "react";
+
 import { SearchAccount } from "./SearchAccount";
 import { SendEmail } from "./SendEmail";
 import { CodeVerification } from "./CodeVerification";
 import { Footer } from "../../components/login/Footer";
 import { ChangePassword } from "./ChangePassword";
+
 export function Reset() {
   const { user } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
