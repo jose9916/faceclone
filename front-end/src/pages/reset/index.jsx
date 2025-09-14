@@ -10,6 +10,7 @@ import { SendEmail } from "./SendEmail";
 import { CodeVerification } from "./CodeVerification";
 import { Footer } from "../../components/login/Footer";
 import { ChangePassword } from "./ChangePassword";
+import { LoginInput } from "../../components/inputs/logininput";
 
 export function Reset() {
   const { user } = useSelector((state) => ({ ...state }));
