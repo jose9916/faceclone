@@ -4,7 +4,7 @@ import { left } from "../../../data/home.jsx";
 import { Link } from "react-router-dom";
 import { ArrowDown1 } from "../../../svg";
 import { useState } from "react";
-import { Shortcut } from "./Shortcut";
+/* import { Shortcut } from "./Shortcut"; */
 
 export function LeftHome({ user }) {
   const [visible, setVisible] = useState(false);
@@ -66,7 +66,7 @@ export function LeftHome({ user }) {
         <div className="edit_shortcut">Edit</div>
       </div>
       <div className="shortcut_list">
-        <Shortcut
+        {/* <Shortcut
           link="https://www.youtube.com/c/MohamedHaJJi1/featured"
           img="../../images/ytb.png"
           name="My Youtube channel"
@@ -76,7 +76,7 @@ export function LeftHome({ user }) {
           link="https://www.instagram.com/med_hajji7/"
           img="../../images/insta.png"
           name="My Instagram "
-        />
+        /> */}
       </div>
       <div className={`fb_copyright ${visible && "relative_fb_copyright"}`}>
         <Link to="/">Privacy </Link>
