@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { Form, Formik } from "formik";
 import { useState } from "react";
-import { LoginInput } from "../../components/inputs/loginInput";
 import { SearchAccount } from "./SearchAccount";
 import { SendEmail } from "./SendEmail";
 import { CodeVerification } from "./CodeVerification";
