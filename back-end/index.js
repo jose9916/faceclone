@@ -13,7 +13,8 @@ app.use(
     origin: (origin, callback) => {
       const ACCEPTED_ORIGINS = [
         `http://localhost:5173`,
-        `https://comfortable-encouragement-production-7307.up.railway.app`,
+        `https://faceclone-production-3270.up.railway.app/`,
+        `http://localhost:3000`,
       ];
       if (ACCEPTED_ORIGINS.includes(origin)) {
         return callback(null, true);
