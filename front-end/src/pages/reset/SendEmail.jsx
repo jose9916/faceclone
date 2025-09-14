@@ -1,0 +1,99 @@
+import { Link } from "react-router-dom";
+
+export function SendEmail({
+  userInfos,
+  email,
+  error,
+  setError,
+  setVisible,
+  setUserInfos,
+  loading,
+  setLoading,
+}) {
+  const sendEmail = () => {
+    setLoading(true);
+
+    return fetch(`${import.meta.env.VITE_APP_API}/sendResetPasswordCode`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    })
+      .then((res) =>
+        res
+          .json()
+          .catch(() => ({}))
+          .then((data) => {
+            if (!res.ok) {
+              throw new Error(data.message || "Failed to send reset code");
+            }
+            return data; // { message: "Email reset code has been sent to your email" }
+          })
+      )
+      .then(() => {
+        setError("");
+        setVisible(2); // avanza al siguiente paso del flujo
+      })
+      .catch((err) => {
+        setError(err.message || "Something went wrong.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+  /* const sendEmail = async () => {
+    try {
+      setLoading(true);
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/sendResetPasswordCode`,
+        { email }
+      );
+      setError("");
+      setVisible(2);
+    } catch (error) {
+      setLoading(false);
+      setError(error.response.data.message);
+    }
+  }; */
+  return (
+    <div className="reset_form dynamic_height">
+      <div className="reset_form_header">Reset Your Password</div>
+      <div className="reset_grid">
+        <div className="reset_left">
+          <div className="reset_form_text">
+            How do you want to receive the code to reset your password?
+          </div>
+          <label htmlFor="email" className="hover1">
+            <input type="radio" name="" id="email" checked readOnly />
+            <div className="label_col">
+              <span>Send code via email</span>
+              <span>{userInfos.email}</span>
+            </div>
+          </label>
+        </div>
+        <div className="reset_right">
+          <img src={userInfos.picture} alt="" />
+          <span>{userInfos.email}</span>
+          <span>Facebook user</span>
+        </div>
+      </div>
+      {error && (
+        <div className="error_text" style={{ padding: "10px" }}>
+          {error}
+        </div>
+      )}
+      <div className="reset_form_btns">
+        <Link to="/login" className="gray_btn">
+          Not You ?
+        </Link>
+        <button
+          onClick={() => {
+            sendEmail();
+          }}
+          className="blue_btn"
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+  );
+}

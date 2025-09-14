@@ -1,0 +1,41 @@
+{
+  "name": "front-end",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "dotenv": "^17.0.0",
+    "emoji-picker-react": "^4.13.2",
+    "file-saver": "^2.0.5",
+    "formik": "^2.4.6",
+    "js-cookie": "^3.0.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-easy-crop": "^5.5.0",
+    "react-responsive": "^10.0.1",
+    "react-router-dom": "^7.7.1",
+    "react-spinners": "^0.17.0",
+    "react-timeago": "^8.3.0",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "react-redux": "^8.1.2",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "vite": "^6.3.5"
+  }
+}
