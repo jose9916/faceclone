@@ -16,6 +16,7 @@ app.use(
         `https://faceclone-production-3270.up.railway.app`,
         `http://localhost:3000`,
         `https://triumphant-adaptation-production.up.railway.app`,
+        `http://localhost:8080`,
       ];
       if (ACCEPTED_ORIGINS.includes(origin)) {
         return callback(null, true);
