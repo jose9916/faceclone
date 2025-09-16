@@ -9,21 +9,24 @@ const mongoose = require("mongoose");
 mongoose.connect(mongoURL);
 
 const ACCEPTED_ORIGINS = [
-  `http://localhost:5173`,
-  `https://faceclone-production-b0ec.up.railway.app`,
-  `http://localhost:3000`,
-  `https://earnest-healing-production-bb56.up.railway.app`,
-  `http://localhost:8080`,
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "http://localhost:8080",
+  "https://faceclone-production-b0ec.up.railway.app", // backend
+  "https://earnest-healing-production-bb56.up.railway.app", // frontend
 ];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
+    origin: function (origin, callback) {
       if (!origin || ACCEPTED_ORIGINS.includes(origin)) {
-        return callback(null, true);
+        callback(null, true);
+      } else {
+        console.log("❌ Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
       }
-      return callback(new Error("Not allowed by CORS"));
     },
+    credentials: true, // <--- añade esto si usas cookies/sesiones
   })
 );
 
