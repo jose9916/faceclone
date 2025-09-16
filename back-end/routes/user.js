@@ -30,6 +30,9 @@ const { authUser } = require("../middlwares/auth");
 
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.status(200).json({ message: "Server is healthy" });
+});
 router.post("/register", register);
 router.post("/activate", authUser, activateAccount);
 router.post("/login", login);
