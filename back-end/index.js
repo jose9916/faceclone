@@ -10,7 +10,7 @@ mongoose.connect(mongoURL);
 
 const ACCEPTED_ORIGINS = [
   `http://localhost:5173`,
-  `https://faceclone-production-b0ec.up.railway.app`,
+  `https://faceclone-production-b0ec.up.railway.app/`,
   `http://localhost:3000`,
   `https://earnest-healing-production-bb56.up.railway.app`,
   `http://localhost:8080`,
