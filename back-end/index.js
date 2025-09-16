@@ -8,11 +8,11 @@ const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 mongoose.connect(mongoURL);
 
-/* const ACCEPTED_ORIGINS = [
+const ACCEPTED_ORIGINS = [
   `http://localhost:5173`,
-  `https://faceclone-production-b0ec.up.railway.app`,
+  `https://faceclone-production-6b91.up.railway.app`,
   `http://localhost:3000`,
-  `https://earnest-healing-production-bb56.up.railway.app`,
+  `https://faceclone-production-a0c4.up.railway.app`,
   `http://localhost:8080`,
 ];
 
@@ -25,14 +25,14 @@ app.use(
       return callback(new Error("Not allowed by CORS"));
     },
   })
-); */
-app.use(
+);
+/* app.use(
   cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
-);
+); */
 app.use(express.json());
 
 app.use(
