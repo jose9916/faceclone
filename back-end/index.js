@@ -8,20 +8,18 @@ const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 mongoose.connect(mongoURL);
 
+const ACCEPTED_ORIGINS = [
+  `http://localhost:5173`,
+  `https://faceclone-production-3270.up.railway.app`,
+  `http://localhost:3000`,
+  `https://triumphant-adaptation-production.up.railway.app`,
+  `http://localhost:8080`,
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      const ACCEPTED_ORIGINS = [
-        `http://localhost:5173`,
-        `https://faceclone-production-3270.up.railway.app`,
-        `http://localhost:3000`,
-        `https://triumphant-adaptation-production.up.railway.app`,
-        `http://localhost:8080`,
-      ];
-      if (ACCEPTED_ORIGINS.includes(origin)) {
-        return callback(null, true);
-      }
-      if (!origin) {
+      if (!origin || ACCEPTED_ORIGINS.includes(origin)) {
         return callback(null, true);
       }
       return callback(new Error("Not allowed by CORS"));
