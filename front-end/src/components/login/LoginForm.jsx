@@ -36,6 +36,7 @@ export function LoginForm({ setVisible }) {
 
     return await fetch(`${import.meta.env.VITE_APP_API}/login`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
