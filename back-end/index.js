@@ -49,6 +49,6 @@ mongoose.connection.on("connected", () => {
 });
 readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)));
 
-app.listen(PORT, () => {
-  console.log(`server listening on port http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${PORT}`);
 });
