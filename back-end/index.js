@@ -12,7 +12,7 @@ app.use(
   cors({
     origin: (origin, callback) => {
       const ACCEPTED_ORIGINS = [
-        `http://localhost:5173`,
+        `http://localhost:5173/`,
         `https://faceclone-production-3270.up.railway.app`,
         `http://localhost:3000`,
         `https://triumphant-adaptation-production.up.railway.app`,
