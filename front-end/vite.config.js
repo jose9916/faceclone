@@ -1,10 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
+
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173, // Configura el puerto del servidor de desarrollo
+    host: "0.0.0.0",
+    port: process.env.PORT || 5173,
+  },
+  preview: {
+    host: "0.0.0.0",
+    port: process.env.PORT || 5173,
+    allowedHosts: ["triumphant-adaptation-production.up.railway.app"],
   },
 });
